@@ -1,0 +1,32 @@
+package com.br.infrastructure.domain;
+
+import com.br.core.enums.Roles;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "tb_user")
+@Data
+@EqualsAndHashCode(of = "id")
+@NoArgsConstructor
+public class User {
+
+    public User(String login, String password, Roles roles) {
+        this.login = login;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String login;
+
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Roles roles;
+}
