@@ -2,6 +2,7 @@ package com.br.infrastructure.config;
 
 import com.br.application.gateway.product.CreateProductEntityGateway;
 import com.br.application.gateway.product.DeleteByIdProductEntityGateway;
+import com.br.application.gateway.product.ExistsByIdProductEntityGateway;
 import com.br.application.gateway.product.FindByIdProductEntityGateway;
 import com.br.application.impl.product.CreateProductEntityUseCaseImpl;
 import com.br.application.impl.product.DeleteByIdProductEntityUseCaseImpl;
@@ -18,8 +19,9 @@ public class ProductConfig {
     }
 
     @Bean
-    public FindByIdProductEntityUseCaseImpl findByIdProductEntityUseCase(FindByIdProductEntityGateway findByIdProductEntityGateway){
-        return new FindByIdProductEntityUseCaseImpl(findByIdProductEntityGateway);
+    public FindByIdProductEntityUseCaseImpl findByIdProductEntityUseCase(FindByIdProductEntityGateway findByIdProductEntityGateway, ExistsByIdProductEntityGateway existsByIdProductEntityGateway){
+        return new FindByIdProductEntityUseCaseImpl(findByIdProductEntityGateway, existsByIdProductEntityGateway);
+
     }
 
     @Bean

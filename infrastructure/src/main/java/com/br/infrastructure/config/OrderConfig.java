@@ -2,6 +2,7 @@ package com.br.infrastructure.config;
 
 import com.br.application.gateway.order.CreateOrderEntityGateway;
 import com.br.application.gateway.order.DeleteByIdOrderEntityGateway;
+import com.br.application.gateway.order.ExistsByIdOrderEntityGateway;
 import com.br.application.gateway.order.FindByIdOrderEntityGateway;
 import com.br.application.impl.order.CreateOrderEntityUseCaseImpl;
 import com.br.application.impl.order.DeleteByIdOrderEntityUseCaseImpl;
@@ -22,8 +23,8 @@ public class OrderConfig {
     }
 
     @Bean
-    public FindByIdOrderEntityUseCaseImpl findByIdOrderEntityUseCase(FindByIdOrderEntityGateway findByIdOrderEntityGateway){
-        return new FindByIdOrderEntityUseCaseImpl(findByIdOrderEntityGateway);
+    public FindByIdOrderEntityUseCaseImpl findByIdOrderEntityUseCase(FindByIdOrderEntityGateway findByIdOrderEntityGateway, ExistsByIdOrderEntityGateway existsByIdOrderEntityGateway){
+        return new FindByIdOrderEntityUseCaseImpl(findByIdOrderEntityGateway, existsByIdOrderEntityGateway);
     }
 
     @Bean

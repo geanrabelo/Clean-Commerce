@@ -2,6 +2,7 @@ package com.br.infrastructure.config;
 
 import com.br.application.gateway.user.CreateUserEntityGateway;
 import com.br.application.gateway.user.DeleteByIdUserEntityGateway;
+import com.br.application.gateway.user.ExistsByIdUserEntityGateway;
 import com.br.application.gateway.user.FindByIdUserEntityGateway;
 import com.br.application.impl.user.CreateUserEntityUseCaseImpl;
 import com.br.application.impl.user.DeleteByIdUserEntityUseCaseImpl;
@@ -26,7 +27,7 @@ public class UserConfig {
     }
 
     @Bean
-    public FindByIdUserEntityUseCaseImpl FindByIdUserEntityUseCaseImpl(FindByIdUserEntityGateway findByIdUserEntityGateway){
-        return new FindByIdUserEntityUseCaseImpl(findByIdUserEntityGateway);
+    public FindByIdUserEntityUseCaseImpl FindByIdUserEntityUseCaseImpl(FindByIdUserEntityGateway findByIdUserEntityGateway, ExistsByIdUserEntityGateway existsByIdUserEntityGateway){
+        return new FindByIdUserEntityUseCaseImpl(findByIdUserEntityGateway, existsByIdUserEntityGateway);
     }
 }

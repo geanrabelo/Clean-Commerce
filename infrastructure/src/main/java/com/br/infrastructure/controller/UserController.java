@@ -1,5 +1,6 @@
 package com.br.infrastructure.controller;
 
+import com.br.core.exceptions.UserNotFound;
 import com.br.infrastructure.domain.User;
 import com.br.infrastructure.dto.user.UserCreatedDTO;
 import com.br.infrastructure.dto.user.UserFindDTO;
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<?> findById(@RequestParam(value = "id") Long id){
+    public ResponseEntity<?> findById(@RequestParam(value = "id") Long id) throws UserNotFound {
         var userEntity = findByIdUserEntityUseCase.findById(id);
         return ResponseEntity.ok(new UserFindDTO(id, userEntity));
     }

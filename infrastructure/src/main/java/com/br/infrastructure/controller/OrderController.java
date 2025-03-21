@@ -1,5 +1,6 @@
 package com.br.infrastructure.controller;
 
+import com.br.core.exceptions.OrderNotFound;
 import com.br.infrastructure.dto.order.OrderCreatedDTO;
 import com.br.infrastructure.dto.order.OrderFindDTO;
 import com.br.infrastructure.dto.order.OrderResponseDTO;
@@ -52,7 +53,7 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<?> findById(@RequestParam(value = "uuid")UUID uuid){
+    public ResponseEntity<?> findById(@RequestParam(value = "uuid")UUID uuid) throws OrderNotFound {
         var orderEntity = findByIdOrderEntityUseCase.findById(uuid);
         var order = orderMapper.toOrderAll(orderEntity);
         return ResponseEntity.ok(new OrderFindDTO(order.getUuid(), order.getUser(), order.getPrice()));

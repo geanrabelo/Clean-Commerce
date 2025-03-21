@@ -1,5 +1,6 @@
 package com.br.infrastructure.controller;
 
+import com.br.core.exceptions.ProductNotFound;
 import com.br.infrastructure.domain.Product;
 import com.br.infrastructure.dto.product.ProductCreatedDTO;
 import com.br.infrastructure.dto.product.ProductFindDTO;
@@ -51,7 +52,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<?> findById(@RequestParam(value = "id") Long id){
+    public ResponseEntity<?> findById(@RequestParam(value = "id") Long id) throws ProductNotFound {
         var productEntity = findByIdProductEntityUseCase.findById(id);
         return ResponseEntity.ok(new ProductFindDTO(productEntity));
     }
