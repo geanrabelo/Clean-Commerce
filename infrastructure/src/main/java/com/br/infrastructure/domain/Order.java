@@ -1,25 +1,32 @@
 package com.br.infrastructure.domain;
 
+import com.br.core.entities.OrderEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.aspectj.weaver.ast.Or;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 @Entity(name = "order")
-@Table(name = "order")
+@Table(name = "tb_order")
 @Data
 @EqualsAndHashCode(of = "uuid")
 @NoArgsConstructor
 public class Order {
 
-    public Order(User user, float price){
+    public Order(User user){
         this.user = user;
-        this.price = price;
+    }
+
+    public Order(OrderEntity orderEntity, User user){
+        this.uuid = orderEntity.getId();
+        this.user = user;
+        this.price = orderEntity.getPrice();
     }
 
     @Id

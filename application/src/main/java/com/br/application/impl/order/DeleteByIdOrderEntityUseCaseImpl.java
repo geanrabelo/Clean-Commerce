@@ -8,7 +8,8 @@ import java.util.UUID;
 public class DeleteByIdOrderEntityUseCaseImpl implements DeleteByIdOrderEntityUseCase {
 
     private DeleteByIdOrderEntityGateway deleteByIdOrderEntityGateway;
-    private DeleteByIdOrderEntityUseCaseImpl(DeleteByIdOrderEntityGateway deleteByIdOrderEntityGateway){
+
+    public DeleteByIdOrderEntityUseCaseImpl(DeleteByIdOrderEntityGateway deleteByIdOrderEntityGateway){
         this.deleteByIdOrderEntityGateway = deleteByIdOrderEntityGateway;
     }
     @Override

@@ -11,8 +11,13 @@ public class OrderEntity {
     private float price;
     private List<ProductEntity> productEntityList;
 
-    public OrderEntity(UserEntity userEntity, float price) {
+    public OrderEntity(UserEntity userEntity) {
         this.user = userEntity;
+    }
+
+    public OrderEntity(UUID id, UserEntity user, float price) {
+        this.id = id;
+        this.user = user;
         this.price = price;
     }
 

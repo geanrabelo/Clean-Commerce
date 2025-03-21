@@ -1,4 +1,9 @@
 package com.br.infrastructure.dto.product;
 
-public record ProductResponseDTO() {
+import java.util.UUID;
+
+public record ProductResponseDTO(String name,
+                                 int quantity,
+                                 String order_uuid,
+                                 float price) {
 }

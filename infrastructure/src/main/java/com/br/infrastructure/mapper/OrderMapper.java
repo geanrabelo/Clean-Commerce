@@ -22,13 +22,21 @@ public class OrderMapper {
         var listProductentity = productMapper.toListProductEntity(order.getProductList());
 
         return new OrderEntity(
-                userMapper.toUserEntity(order.getUser())
-                , order.getPrice());
+                userMapper.toUserEntity(order.getUser()));
     }
 
     public Order toOrder(OrderEntity orderEntity){
         return new Order(
-                userMapper.toUser(orderEntity.getUser())
-                , orderEntity.getPrice());
+                userMapper.toUser(orderEntity.getUser()));
+    }
+
+    public Order toOrderAll(OrderEntity orderEntity){
+        var user = userMapper.toUserWithId(orderEntity.getUser());
+        return new Order(orderEntity, user);
+    }
+
+    public OrderEntity toOrderEntityAll(Order order){
+        var userEntity = userMapper.toUserEntityWithId(order.getUser());
+        return new OrderEntity(order.getUuid(), userEntity, order.getPrice());
     }
 }

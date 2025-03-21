@@ -10,10 +10,19 @@ public class ProductEntity {
     private float price;
     private OrderEntity order;
 
-    public ProductEntity(String name, int quantity, float price) {
+    public ProductEntity(Long id, String name, int quantity, float price, OrderEntity order) {
+        this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
+        this.order = order;
+    }
+
+    public ProductEntity(String name, int quantity, float price, OrderEntity orderEntity) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.order = orderEntity;
     }
 
     public Long getId() {

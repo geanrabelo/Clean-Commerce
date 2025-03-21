@@ -19,6 +19,13 @@ public class User {
         this.roles = roles;
     }
 
+    public User(Long id, String login, String password, Roles roles) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.roles = roles;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

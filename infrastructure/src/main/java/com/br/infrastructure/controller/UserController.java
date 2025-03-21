@@ -35,7 +35,7 @@ public class UserController {
     public ResponseEntity<?> save(@RequestBody @Valid UserResponseDTO userResponseDTO, UriComponentsBuilder uriComponentsBuilder){
         var user = new User(userResponseDTO.login(), userResponseDTO.password(), userResponseDTO.roles());
         createUserEntityUseCase.create(userResponseDTO.login(), userResponseDTO.password(), userResponseDTO.roles());
-        var uri = uriComponentsBuilder.path("/user").buildAndExpand(user).toUri();
+        var uri = uriComponentsBuilder.path("/commerce/user").buildAndExpand(user).toUri();
         return ResponseEntity.created(uri).body(new UserCreatedDTO(user));
     }
 

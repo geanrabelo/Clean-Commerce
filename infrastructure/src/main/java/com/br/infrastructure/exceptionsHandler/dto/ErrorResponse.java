@@ -1,4 +1,9 @@
 package com.br.infrastructure.exceptionsHandler.dto;
 
-public record ErrorResponse() {
+import java.util.List;
+
+public record ErrorResponse(int status,
+                            String message,
+                            List<ErrorField> errorFields) {
+
 }

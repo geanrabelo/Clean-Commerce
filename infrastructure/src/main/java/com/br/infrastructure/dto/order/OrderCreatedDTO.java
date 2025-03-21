@@ -1,4 +1,8 @@
 package com.br.infrastructure.dto.order;
 
-public record OrderCreatedDTO() {
+import com.br.infrastructure.domain.User;
+
+import java.util.UUID;
+
+public record OrderCreatedDTO(UUID uuid, User user) {
 }

@@ -6,6 +6,7 @@ import com.br.core.entities.UserEntity;
 import com.br.usecases.order.CreateOrderEntityUseCase;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CreateOrderEntityUseCaseImpl implements CreateOrderEntityUseCase {
 
@@ -17,7 +18,7 @@ public class CreateOrderEntityUseCaseImpl implements CreateOrderEntityUseCase {
     }
 
     @Override
-    public void create(UserEntity user, float price) {
-        createOrderEntityGateway.create(user, price);
+    public UUID create(UserEntity user) {
+        return createOrderEntityGateway.create(user);
     }
 }

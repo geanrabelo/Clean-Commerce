@@ -16,21 +16,49 @@ public class ProductMapper {
     @Autowired
     private OrderMapper orderMapper;
 
+    public ProductEntity toProductEntityAll(Product product){
+        return new ProductEntity(
+                product.getId()
+                , product.getName()
+                , product.getQuantity()
+                , product.getPrice()
+                , orderMapper.toOrderEntityAll(product.getOrder())
+        );
+    }
+
+    public Product toProductAll(ProductEntity productEntity){
+        return new Product(
+                productEntity.getId()
+                , productEntity.getName()
+                , productEntity.getQuantity()
+                , productEntity.getPrice()
+                , orderMapper.toOrderAll(productEntity.getOrder())
+        );
+    }
+
     public ProductEntity toProductEntity(Product product){
         return new ProductEntity(product.getName()
                 , product.getQuantity()
-                , product.getPrice());
+                , product.getPrice()
+                , orderMapper.toOrderEntityAll(product.getOrder()));
     }
+
     public Product toProduct(ProductEntity product){
-        return new Product(product.getName(),
-                product.getQuantity(),
-                product.getPrice());
+        return new Product(product.getName()
+                , product.getQuantity()
+                , product.getPrice()
+                , orderMapper.toOrderAll(product.getOrder()));
     }
 
     public List<ProductEntity> toListProductEntity(List<Product> productList){
         List<ProductEntity> productEntity = new ArrayList<>();
         for(Product product : productList){
-            productEntity.add(toProductEntity(product));
+            productEntity.add(new ProductEntity(
+                    product.getName()
+                    , product.getQuantity()
+                    , product.getPrice()
+                    , orderMapper.toOrderEntityAll(product.getOrder())
+            ));
         }
         return productEntity;
     }
@@ -41,7 +69,8 @@ public class ProductMapper {
             productList.add(
                     new Product(productEntity.getName()
                             , productEntity.getQuantity()
-                            , productEntity.getPrice()));
+                            , productEntity.getPrice()
+                            , orderMapper.toOrderAll(productEntity.getOrder())));
         }
         return productList;
     }

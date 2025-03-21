@@ -2,6 +2,7 @@ package com.br.application.impl.product;
 
 import com.br.application.gateway.product.CreateProductEntityGateway;
 import com.br.core.entities.OrderEntity;
+import com.br.core.entities.ProductEntity;
 import com.br.core.enums.Roles;
 import com.br.usecases.product.CreateProductEntityUseCase;
 
@@ -15,7 +16,7 @@ public class CreateProductEntityUseCaseImpl implements CreateProductEntityUseCas
         this.createProductEntityGateway = createProductEntityGateway;
     }
     @Override
-    public void create(String name, int quantity, float price, UUID order_uuid) {
-        createProductEntityGateway.create(name, quantity, price, order_uuid);
+    public void create(ProductEntity product) {
+        createProductEntityGateway.create(product);
     }
 }

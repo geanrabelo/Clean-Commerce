@@ -1,4 +1,4 @@
 package com.br.infrastructure.dto.order;
 
-public class OrderResponseDTO {
+public record OrderResponseDTO(Long id_user) {
 }
